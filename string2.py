@@ -33,6 +33,12 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
+    z = s.find('not')
+    y = s.find('bad')
+    if z > y:
+        return s
+    if 'bad' not in s:
+        return s
     char_list = ['!', '.', '?']
     if s[-1] in char_list:
         new_str = s.split('not')
