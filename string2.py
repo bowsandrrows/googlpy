@@ -56,8 +56,15 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-    # +++your code here+++
-    return
+    a_front, a_back = divmod(len(a), 2)
+    b_front, b_back = divmod(len(b), 2)
+    first_half_a = a[:a_front + a_back]
+    meddle_a = a[a_front + a_back:]
+    second_half_b = b[b_front + b_back:]
+    meddle_b = b[:b_front + b_back]
+    new_word = first_half_a + meddle_b + meddle_a + second_half_b
+
+    return new_word
 
 
 # Simple provided test() function used in main() to print
