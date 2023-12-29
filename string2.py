@@ -63,7 +63,6 @@ def front_back(a, b):
     second_half_b = b[b_front + b_back:]
     meddle_b = b[:b_front + b_back]
     new_word = first_half_a + meddle_b + meddle_a + second_half_b
-
     return new_word
 
 
