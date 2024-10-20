@@ -60,6 +60,25 @@ def print_words(filename):
             
 print_word(filename)
 
+# Using dictionary instead of a list in the code above.
+def word_count(file_name) -> None:
+    my_dict = {}
+    with open(file_name, 'r') as f:
+        file = sorted(f.read().split())
+        for ff in file:
+            ff = ff.lower()
+            if ff not in my_dict:
+                my_dict[ff] = 1
+            elif ff in my_dict:
+                my_dict[ff] += 1
+    word_count2(my_dict)
+
+
+def word_count2(my_dict) -> None:
+    for k, v in my_dict.items():
+        print(f'{k} {v}')
+
+word_count(filename)
 
 
 def print_top(filename):
