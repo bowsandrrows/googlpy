@@ -46,37 +46,20 @@ import sys
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
-# LAB(begin solution)
-
-def word_count_dict(filename):
-    """Returns a word/count dict for this filename."""
-    # Utility used by count() and Topcount().
-    word_count = {}  # Map each word to its count
-    input_file = open(filename, encoding='utf-8')
-    for line in input_file:
-        words = line.split()
-        for word in words:
-            word = word.lower()
-            # Special case if we're seeing this word for the first time.
-            if not word in word_count:
-                word_count[word] = 1
-            else:
-                word_count[word] = word_count[word] + 1
-    input_file.close()  # Not strictly required, but good form.
-    return word_count
-
-
 def print_words(filename):
-    """Prints one per line '<word> <count>' sorted by word for the given file."""
-    word_count = word_count_dict(filename)
-    words = sorted(word_count.keys())
-    for word in words:
-        print(word, word_count[word])
+    from collections import Counter
+    new_list = []
+    with open(filename, 'r') as file:
+        f = file.read().split()
+        for word in f:
+            new_list.append(word.lower())
+            new_list.sort()
+            word_counts = Counter(new_list)
+        for index, (word, count) in enumerate(word_counts.items(), 1):
+            print(f'{word}{index} count{count}')
+            
+print_word(filename)
 
-
-def get_count(word_count_tuple):
-    """Returns the count from a dict word/count tuple  -- used for custom sort."""
-    return word_count_tuple[1]
 
 
 def print_top(filename):
